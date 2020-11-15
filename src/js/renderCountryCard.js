@@ -37,7 +37,7 @@ function receivedDataHandler(data) {
         );
     } else if (data.length === 1) {
         markupCountry(data);
-        getRestData(data[0].name.toLowerCase());
+        getRestData(data[0].name.toLowerCase().split(" ").join(''));
      
     } else if (data.length <= 10) {
         markupCountriesList(data);
@@ -55,8 +55,6 @@ function onFetchError() {
         );
 }
  
-
-  
 function getRestData(country) {
     return fetch(`https://coronavirus-19-api.herokuapp.com/countries/${country}`)
         .then(response => {
